@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% from 'inline_page.html' import inline_page %}
+{% from 'sidebar_page.html' import sidebar_page %}
+{% block content %}
+
+<ul>
+  {% for page in site_pages(path="stories/*", limit=10) if 'main' in page.meta.categories %}
+  		{{ inline_page(page) }} 
+  {% endfor %}
+</ul>
+
+{% endblock %}
+
+{% block sidebar %}
+<div class="embed-responsive embed-responsive-16by9">
+		<iframe class="embed-responsive-item"
+		scrolling="No"
+		src="http://weather.gc.ca/wxlink/wxlink.html?cityCode=sk-40&amp;lang=e" >
+		<a href="http://weather.gc.ca">Weather</a>
+</iframe>
+</div>
+
+
+<!-- embedd some rss feeds -->
+<div class="panel panel-info">
+		<div class="panel-heading">
+				<h2 class="panel-title"><a href="http://www.slashdot.org">Slashdot</a></h2>
+		</div>
+<ul>
+
+{% for i in parse_feed(url="http://rss.slashdot.org/Slashdot/slashdot", limit=10) %}
+	<li><a href="{{ i["link"] }}">{{ i["title"]|safe }}</a>
+{% endfor %}
+</ul>
+</div>
+
+<div class="panel panel-info">
+		<div class="panel-heading">
+				<h2 class="panel-title"><a href="https://news.google.ca">News</a></h2>
+		</div>
+		<ul>
+
+				{% for i in
+				parse_feed(url="http://news.google.ca/news?pz=1&ned=ca&hl=en&zx=bcg635-ya1jqw&output=rss",
+				limit=10) %}
+				<li><a href="{{
+						i["link"]
+						}}">{{
+						i["title"]|safe
+						}}</a>
+				{% endfor %}
+		</ul>
+</div>
+
+
+
+
+{% for page in site_pages(path="stories/*", limit=10) if 'main_sidebar' in page.meta.categories %}
+    		{{ sidebar_page(page) }} 
+{% endfor %}
+
+{% endblock %}
+

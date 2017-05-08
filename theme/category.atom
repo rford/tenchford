@@ -1,0 +1,2 @@
+{% from 'syndication.xml' import atom_feed -%}
+{{atom_feed(pages[:15], link=url_for_category(category), title=SITE_NAME + ": " + category.name)}}

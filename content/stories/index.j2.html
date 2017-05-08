@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% from 'inline_page.html' import inline_page %}
+
+{% block head %}
+<link href="{{ url_for("index.rss") }}" rel="alternate" type="application/rss+xml" title="{{SITE_NAME}}: blog RSS2 feed"></link>
+<link href="{{ url_for("index.atom") }}" rel="alternate" type="application/atom+xml" title="{{SITE_NAME}}: blog ATOM feed"></link>
+{% endblock %}
+
+{% block nav %}
+{{super()}}
+<li><a href="{{ url_for('/stories/archive.html') }}">Archive</a></li>
+{% endblock %}
+
+{% block content %}
+<h1>entries</h1>
+{% for page in site_pages(path="stories/*", limit=10) %}
+{{inline_page(page)}}
+{% endfor %}
+
+{% endblock %}
