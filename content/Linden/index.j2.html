@@ -1,0 +1,37 @@
+{% extends "Linden_base.html" %}
+{% from 'inline_page.html' import inline_page %}
+{% from 'sidebar_page.html' import sidebar_page %}
+{% block content %}
+
+<ul>
+  {% for page in site_pages(path="Linden/*", limit=10) if 'main' in page.meta.categories %}
+  		{{ inline_page(page) }} 
+  {% endfor %}
+</ul>
+
+{% endblock %}
+
+{% block sidebar %}
+
+<!-- embedd some rss feeds -->
+<div class="panel panel-info">
+		<div class="panel-heading">
+				<h2 class="panel-title"><a href="http://www.youtube.com/channel/UC2__Vo8Ujl0cVR0gqfPOMzw">Video about video games</a></h2>
+				<ul>
+		</div>
+			{% for i in	parse_feed(url="http://www.youtube.com/feeds/videos.xml?channel_id=UC2__Vo8Ujl0cVR0gqfPOMzw", limit=10) %}
+						    <li><a href="{{ i["link"] }}">{{ i["title"]|safe}}</a>
+			{% endfor %}
+				</ul>
+
+</div>
+
+
+
+
+{% for page in site_pages(path="Linden/*", limit=10) if 'main_sidebar' in page.meta.categories %}
+    		{{ sidebar_page(page) }} 
+{% endfor %}
+
+{% endblock %}
+
