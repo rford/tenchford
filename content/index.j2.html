@@ -15,7 +15,7 @@
 <div class="embed-responsive embed-responsive-16by9">
 		<iframe class="embed-responsive-item"
 		scrolling="No"
-		src="http://weather.gc.ca/wxlink/wxlink.html?cityCode=sk-40&amp;lang=e" >
+		src="https://weather.gc.ca/wxlink/wxlink.html?cityCode=sk-40&amp;lang=e" >
 		<a href="http://weather.gc.ca">Weather</a>
 </iframe>
 </div>
@@ -41,7 +41,7 @@
 		<ul>
 
 				{% for i in
-				parse_feed(url="http://news.google.ca/news?pz=1&ned=ca&hl=en&zx=bcg635-ya1jqw&output=rss",
+				parse_feed(url="http://news.google.ca/news/rss/?gl=ca&ned=ca&hl=en-CA&zx=bcg635-ya1jq",
 				limit=10) %}
 				<li><a href="{{
 						i["link"]
