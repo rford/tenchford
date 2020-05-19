@@ -1,0 +1,34 @@
+{% macro inline_page(page) -%}
+<div class="card mb-4 embed-responsive">
+	<div class="card-header text-muted d-flex justify-content-between align-items-center">
+    	<a href="{{url_for(page)}}">{{page.meta.title}}</a>
+		<div class="text-center">
+      		<small>{{page.meta.date.strftime("%Y-%m-%d")}}</a></small>
+    	</div>
+    	<div class="text-right">
+    		{% for tag in page.meta.tags %}
+    			<a class="badge badge-pill badge-primary" href="{{ url_for(tag) }}" class="label label-default">{{tag.name}}</a>
+    		{% endfor %}
+    	</div>
+  	</div>
+  	<div class="card-body">
+    	{% if page.meta.image %}
+    	{% with img = page.meta.image %}
+    	<figure class="figure float-right ml-3 text-center">
+      	{{img_for(img, class="figure-img img-fluid rounded", sizes="(min-width: 1200px) 33vw, (min-width: 576px) 25vw, 100vw")}}
+      	{% if img.meta.title %}<figcaption class="figure-caption text-center">{{img.meta.title}}</figcaption>{% endif %}
+    	</figure>
+    	{% endwith %}
+    	{% endif %}
+
+    {{page.html_inline()|safe}}
+  	</div>
+</div>
+{%- endmacro %}
+
+
+{% macro pages(pages) -%}
+  {% for entry in pages %}
+    {{inline_page(entry)}}
+  {% endfor %}
+{%- endmacro %}
