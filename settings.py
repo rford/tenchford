@@ -18,9 +18,13 @@ TIMEZONE = "Canada/Saskatchewan"
 # Directory with the source content of the site
 CONTENT = "content"
 
+
+#theme paths
+THEME_PATHS = ["/home/rford/tenchford", "/home/rford/staticsite/themes"]
+
 # Theme used to render the content
 # Default: the one installed in the system
-THEME = "default"
+THEME = "theme"
 
 # Directory with "archetypes" (templates used by ssite new)
 #ARCHETYPES = "archetypes"
