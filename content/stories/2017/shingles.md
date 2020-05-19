@@ -8,6 +8,6 @@ categories = ["main"]
 
 ##Major construction done.
 Walls and roof are done..  Shingled and Insulated.
-![front](front.png){:class="img-responsive"}
-![back](back.png){:class="img-responsive"}
+![front](front.png){:class="img-fluid"}
+![back](back.png){:class="img-fluid"}
 

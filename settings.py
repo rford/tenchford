@@ -16,11 +16,11 @@ TIMEZONE = "Canada/Saskatchewan"
 # SITE_ROOT = "/"
 
 # Directory with the source content of the site
-# CONTENT = "content"
+CONTENT = "content"
 
 # Theme used to render the content
 # Default: the one installed in the system
-THEME = "theme"
+THEME = "default"
 
 # Directory with "archetypes" (templates used by ssite new)
 #ARCHETYPES = "archetypes"

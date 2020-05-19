@@ -16,6 +16,6 @@ We used a cement board called *hardie board*
 grey*  We decided to breakup the walls a little by use of batten boards and
 some white transitions. 
 
-![front](FrontSiding.png){:class="img-responsive"}
-![back](BackSiding.png){:class="img-responsive"}
+![front](FrontSiding.png){:class="img-fluid"}
+![back](BackSiding.png){:class="img-fluid"}
 

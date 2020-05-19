@@ -15,7 +15,7 @@ of Germany.  Their trike is fully faired
 [cygnushpv.blogspot.ca](http://cygnushpv.blogspot.ca) and not something I would be
 willing  to ride on  city streets.
 
-![trike Sketch](trike_drawing.png){: class="img-responsive"}
+![trike Sketch](trike_drawing.png){: class="img-fluid"}
 
 I ride a catrike speed.  A nice little aluminum frame trike, but no fairing.
 

@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% macro inline_page(page) -%}
+<div class="card mb-4 embed-responsive">
+	<div class="card-header text-muted d-flex justify-content-between align-items-center">
+    	<a href="{{url_for(page)}}">{{page.meta.title}}</a>
+		<div class="text-center">
+      		<small>{{page.meta.date.strftime("%Y-%m-%d")}}</a></small>
+    	</div>
+    	<div class="text-right">
+    		{% for tag in page.meta.tags %}
+    			<a class="badge badge-pill badge-primary" href="{{ url_for(tag) }}" class="label label-default">{{tag.name}}</a>
+    		{% endfor %}
+    	</div>
+  	</div>
+  	<div class="card-body">
+    	{% if page.meta.image %}
+    	{% with img = page.meta.image %}
+    	<figure class="figure float-right ml-3 text-center">
+      	{{img_for(img, class="figure-img img-fluid rounded", sizes="(min-width: 1200px) 33vw, (min-width: 576px) 25vw, 100vw")}}
+      	{% if img.meta.title %}<figcaption class="figure-caption text-center">{{img.meta.title}}</figcaption>{% endif %}
+    	</figure>
+    	{% endwith %}
+    	{% endif %}
+
+    {{page.html_inline()|safe}}
+  	</div>
+</div>
+{%- endmacro %}
+
+
+{% macro pages(pages) -%}
+  {% for entry in pages %}
+    {{inline_page(entry)}}
+  {% endfor %}
+{%- endmacro %}
+
+{% block front_matter %}
+---
+# Author of the website
+author: Roger Ford
+
+nav: [tags.taxonomy]
+
+# Absolute URL to the root of the website
+{% endblock %}
+
+{% block title %}Tenchford{% endblock %}
+
+{% block content %}
+<div class="row">
+		<div class="col-lg-8 embed-responsive">
+				{{ pages(taxonomy("categories")["main"].meta.pages|arrange("-date", limit=6)) }}
+		</div>
+
+
+		<div class="col-sm">
+			<div class="card embed-responsive embed-responsive-21by9">
+				 <iframe class="embed-responsive-item" scrolling="No"
+                src="https://weather.gc.ca/wxlink/wxlink.html?cityCode=sk-40&amp;lang=e" >
+                <a href="http://weather.gc.ca">Weather</a>
+				</iframe>
+
+			</div>
+			<div class="card">
+					<div class="card-header"><a href="https://news.google.ca">News</a></div>	
+			</div>
+			<div class="card">
+					<div class="card-header"><a href="http://www.slashdot.org">Slashdot</a></div>	
+			</div>
+
+			{{ pages(taxonomy("categories")["main_sidebar"].meta.pages|arrange("-date", limit=6)) }}
+		
+		</div>
+</div>
+{% endblock %}

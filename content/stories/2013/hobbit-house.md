@@ -41,4 +41,4 @@ but he gained--well, you will see whether he gained anything in the end.
 
 > <Cite>"The Hobbit" (P. 15-16)</cite>
 
-![Hobbit painting](HobbitHouseInside2.jpg){: class="img-responsive"}
+![Hobbit painting](HobbitHouseInside2.jpg){: class="img-fluid"}

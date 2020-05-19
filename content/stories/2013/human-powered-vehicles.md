@@ -2,13 +2,13 @@
 tags = [ "bike",]
 date = "2013-10-04 22:25:32-06:00"
 aliases = ["hpv.html"]
-categories =["main"]
+categories =[]
 +++
 
 # Human Powered Vehicles
 
-![trike image](trike_small.png)
-![recumbent](gtrike.png)
+![trike image](trike_small.png){:class="img-fluid"}
+![recumbent](gtrike.png){:class="img-fluid"}
 	
 This is more then bicycles.  The conventional bicycle despite advances
 in construction and materials has not really improved much in the last
