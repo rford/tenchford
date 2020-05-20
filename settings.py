@@ -20,7 +20,7 @@ CONTENT = "content"
 
 
 #theme paths
-THEME_PATHS = ["/home/rford/tenchford", "/home/rford/staticsite/themes"]
+THEME_PATHS = ["/home/rford/tenchford/themes", "/home/rford/staticsite/themes"]
 
 # Theme used to render the content
 # Default: the one installed in the system

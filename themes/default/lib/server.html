@@ -1,0 +1,16 @@
+{% macro head(server, handler, page) %}
+<script type="text/javascript">
+(function() {
+"use strict";
+
+window.staticsite = {};
+
+window.staticsite.config = {
+    page_socket: "{{handler.ws_url}}",
+    xsrf_token: "{{handler.xsrf_token}}",
+}
+
+})();
+</script>
+<script src="{{page.url_for('/static/js/staticsite-server.js')}}"></script>
+{% endmacro %}
