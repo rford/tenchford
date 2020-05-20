@@ -5,8 +5,12 @@
 ---
 # Author of the website
 author: Roger Ford
-nav: [tags]
+{% endblock %}
 
+{% block nav %}
+{% for p in taxonomy("tags").categories %}
+<li class="nav-item"><a class="nav-link" href="tags/{{ p }}">{{p}}</a></li>
+{% endfor %}
 {% endblock %}
 
 {% block title %}Tenchford{% endblock %}
@@ -19,18 +23,32 @@ nav: [tags]
 
 
 		<div class="col-sm">
-			<div class="card embed-responsive embed-responsive-21by9">
+			<div class="card embed-responsive embed-responsive-21by9  mb-5">
 				 <iframe class="embed-responsive-item" scrolling="No"
                 src="https://weather.gc.ca/wxlink/wxlink.html?cityCode=sk-40&amp;lang=e" >
                 <a href="http://weather.gc.ca">Weather</a>
 				</iframe>
 
 			</div>
-			<div class="card">
-					<div class="card-header"><a href="https://news.google.ca">News</a></div>	
+			<div class="card mb-5">
+					<div class="card-header"><a href="https://news.google.ca">News</a></div>
+					<div class="card-body">
+							<ul>
+							{% for p in  parse_feed(url="http://news.google.ca/news/rss/?gl=ca&ned=ca&hl=en-CA&zx=bcg635-ya1jq", limit=10)  %}
+								<li><a href="{{ p["link"]}}">{{ p["title"]|safe }}</a>
+							{% endfor %}
+							</ul>
+					</div>
 			</div>
-			<div class="card">
-					<div class="card-header"><a href="http://www.slashdot.org">Slashdot</a></div>	
+			<div class="card mb-5">
+					<div class="card-header"><a href="http://www.slashdot.org">Slashdot</a></div>
+					<div class="card-body">
+							<ul>
+							{% for p in parse_feed(url="http://rss.slashdot.org/Slashdot/slashdot", limit=10)%}
+							<li> <a href="{{ p["link"]}}">{{ p["title"]|safe }}</a>
+							{% endfor %}
+							</ul>
+					</div>
 			</div>
 
 			{{ helpers.pages(taxonomy("categories")["main_sidebar"].meta.pages|arrange("-date", limit=6)) }}
