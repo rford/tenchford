@@ -18,7 +18,7 @@ author: Roger Ford
 {% block content %}
 <div class="row">
 		<div class="col-lg-8 embed-responsive">
-				{{ helpers.pages(taxonomy("categories")["main"].meta.pages|arrange("-date", limit=6)) }}
+				{{ helpers.pages("main") }}
 		</div>
 
 
@@ -51,7 +51,7 @@ author: Roger Ford
 					</div>
 			</div>
 
-			{{ helpers.pages(taxonomy("categories")["main_sidebar"].meta.pages|arrange("-date", limit=6)) }}
+			{{ helpers.pages("main_sidebar") }}
 		
 		</div>
 </div>

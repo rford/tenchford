@@ -27,8 +27,11 @@
 {%- endmacro %}
 
 
-{% macro pages(pages) -%}
-  {% for entry in pages %}
-    {{inline_page(entry)}}
-  {% endfor %}
+
+{% macro pages(cat,limit=5,sort="-date") -%}
+  {% if taxonomy("categories")[cat] is defined %}
+  	{% for entry in taxonomy("categories")[cat].meta.pages|arrange(sort,limit) %}
+  		{{inline_page(entry)}}
+  	{% endfor %}
+  {% endif %}
 {%- endmacro %}
