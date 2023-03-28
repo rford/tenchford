@@ -22,7 +22,24 @@
     	{% endif %}
 
     {{page.html_inline()|safe}}
-  	</div>
+	{% if page.meta.issue %}
+	<a href="https://github.com/rford/tenchford-comments/issues/{{page.meta.issue}}#new_comment_field" class="btn btn-primary">
+			Add a Comment</a>
+	
+
+	{% for i in parse_issues(url=page.meta.issue,limit=10) %}
+		<div class="card">
+			<div class="card-header">
+					<img src="{{i.user.avatar_url}}" width='24px'><b><a href={{i.user.html_url}} >{{i.user.login}} </a></b>  
+					Posted at: <em>{{i.created_at}}</em>
+			</div>
+			<div class="card-body">
+				{{i.body_html|safe}}
+			</div>
+		</div>
+	{% endfor %}
+	{% endif %}
+	</div>
 </div>
 {%- endmacro %}
 

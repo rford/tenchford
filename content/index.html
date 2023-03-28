@@ -44,7 +44,7 @@ author: Roger Ford
 					<div class="card-header"><a href="http://www.slashdot.org">Slashdot</a></div>
 					<div class="card-body">
 							<ul>
-							{% for p in parse_feed(url="http://rss.slashdot.org/Slashdot/slashdot", limit=10)%}
+							{% for p in parse_feed(url="http://rss.slashdot.org/Slashdot/slashdotMain", limit=10)%}
 							<li> <a href="{{ p["link"]}}">{{ p["title"]|safe }}</a>
 							{% endfor %}
 							</ul>
